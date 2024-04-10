@@ -1,0 +1,37 @@
+﻿@model IList<BookReadingApp.Core.Modals.Event>
+
+<div class="container">
+    <div class="container">
+        <h3 class="text-success">Upcoming Events</h3>
+        <hr class="border-dark" />
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                if (item.Date > DateTime.Now)
+                {
+                    <partial name="_EventFirst" model="@item" />
+                }
+            }
+        </div>
+    </div>
+
+    <div class="container">
+        <h3 class="text-success"> Past Events</h3>
+        <hr class="border-dark" />
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                if (item.Date < DateTime.Now)
+                {
+                    <partial name="_EventFirst" model="@item" />
+                }
+
+            }
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,19 @@
+﻿@model IList<BookReadingApp.Core.Modals.Event>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    @if (Model.Count == 0)
+    {
+        <div>
+            <h4 class="text-info"> No Events Created Yet</h4>
+        </div>
+    }
+    else
+    {
+        <partial name="_DisplayEvents" model="@Model" />
+    }
+
+</div>

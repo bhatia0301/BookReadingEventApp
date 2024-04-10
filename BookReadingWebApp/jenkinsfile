@@ -1,0 +1,64 @@
+pipeline{
+    agent any
+
+    environment{
+        IMAGE_NAME = 'bhatia0301/jenkins-pipeline'
+        IMAGE_TAG = 'latest'
+    }
+
+    stages{
+        stage('Checkout'){
+            steps{
+                checkout scm
+            }
+        }
+         stage('Build') {
+            steps {
+                sh 'dotnet build BookReadingWebApp/BookReadingApp.Web.csproj --configuration Release'
+            }
+        }
+         stage('Test') {
+            steps {
+                sh 'dotnet test BookReadingWebApp.sln --logger "trx;LogFileName=./aspnetapp.trx"'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                def imageName = 'book-reading-app'
+                def imageTag = 'latest'
+                def dockerfilePath = "${WORKSPACE}/BookReadingWebApp"
+                script {
+                   docker.build("${imageName}:${imageTag}", dockerfilePath)
+                }
+            }
+        }
+        stage('Run SQL Server Container') {
+            steps {
+                script {
+                    sh '''
+                        container_name="sqlserver"
+                        if [ "$(docker ps -aq -f name=${container_name})" ]; then
+                            echo "Container '${container_name}' already exists. Skipping container creation."
+                        else
+                            echo "Container '${container_name}' does not exist. Creating the container..."
+                            docker run -d --name ${container_name} -p 1433:1433 --network testing -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Naman@123' -e 'MSSQL_PID=Express' mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+                        fi
+                    '''
+                }
+            }
+        }
+         stage('Run Container') {
+            steps {
+                script {
+                   
+                    sh 'docker rm -f book-reading-app || true'
+                     def imageId = sh(script: "docker images -q book-reading-app:latest", returnStdout: true).trim()
+                     echo "Docker image ID: ${imageId}"
+                    sh "docker run --rm --name BookReadingApp -p 5000:80 -e 'ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=BookReadingAppDB;User Id=SA;Password=Naman@123;Encrypt=False' -e ASPNETCORE_ENVIRONMENT=Development ${imageId}"
+                }
+            }
+        }
+
+    }  
+
+}

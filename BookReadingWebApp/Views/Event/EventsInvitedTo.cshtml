@@ -1,0 +1,64 @@
+﻿@model IList<BookReadingApp.Core.Modals.Event>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> _signInManager
+@inject UserManager<IdentityUser> _userManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    var user = await _userManager.GetUserAsync(User);
+    var email = "";
+    if (user != null)
+    {
+        email = user.Email;
+    }
+}
+
+<div class="container">
+    @if (Model.Count == 0)
+    {
+        <div>
+            <h4 class="text-info"> Not Yet Invited to the Event</h4>
+        </div>
+    }
+    else
+    {
+        <div class="container">
+            <div class="container">
+
+                <h4>You are Invited in the Events Below:- </h4>
+                <hr />
+                <h3 class="text-success">Upcoming Events</h3>
+                <hr class="border-dark" />
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        if (!string.IsNullOrEmpty(item.Invitees) && item.Invitees.Split(',').Contains(email) && item.Date > DateTime.Now)
+                        {
+                            <partial name="_EventFirst" model="@item" />
+                        }
+                    }
+                </div>
+            </div>
+            <div class="container">
+                <h3 class="text-success"> Past Events</h3>
+                <hr class="border-dark" />
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        if (!string.IsNullOrEmpty(item.Invitees) && item.Invitees.Split(',').Contains(email) && item.Date < DateTime.Now)
+                        {
+                            <partial name="_EventFirst" model="@item" />
+                        }
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

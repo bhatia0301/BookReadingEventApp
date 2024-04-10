@@ -1,0 +1,17 @@
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\bin\Debug\net6.0\BookReadingApp.Infrastructure.deps.json
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\bin\Debug\net6.0\BookReadingApp.Infrastructure.dll
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\bin\Debug\net6.0\BookReadingApp.Infrastructure.pdb
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\bin\Debug\net6.0\BookReadingApp.Application.dll
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\bin\Debug\net6.0\BookReadingApp.Core.dll
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\bin\Debug\net6.0\BookReadingApp.Application.pdb
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\bin\Debug\net6.0\BookReadingApp.Core.pdb
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\obj\Debug\net6.0\BookReadingApp.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\obj\Debug\net6.0\BookReadingApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\obj\Debug\net6.0\BookReadingApp.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\obj\Debug\net6.0\BookReadingApp.Infrastructure.AssemblyInfo.cs
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\obj\Debug\net6.0\BookReadingApp.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\obj\Debug\net6.0\BookReadingApp.Infrastructure.csproj.CopyComplete
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\obj\Debug\net6.0\BookReadingApp.Infrastructure.dll
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\obj\Debug\net6.0\refint\BookReadingApp.Infrastructure.dll
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\obj\Debug\net6.0\BookReadingApp.Infrastructure.pdb
+C:\Users\namanbhatia01\source\repos\BookReadingWebApp\BookReadingApp.Infrastructure\obj\Debug\net6.0\ref\BookReadingApp.Infrastructure.dll

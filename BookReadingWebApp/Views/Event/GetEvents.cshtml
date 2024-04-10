@@ -1,0 +1,101 @@
+﻿@model IList<BookReadingApp.Core.Modals.Event>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> _signInManager
+@inject UserManager<IdentityUser> _userManager
+
+@{
+    var user = await _userManager.GetUserAsync(User);
+    var email = "";
+    if (user != null)
+    {
+        email = user.Email;
+    }
+}
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    @if (Model.Count == 0)
+    {
+        <div>
+            <h4 class="text-info">No Events To Display</h4>
+        </div>
+    }
+    else
+    {
+        @if (email == "myadmin@bookevents.com")
+        {
+            <h2 class="text-primary"> All Events</h2>
+            <hr class="border-dark" />
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <partial name="_EventFirst" model="@item" />
+                }
+            </div>
+        }
+        else
+        {
+            <h2 class="text-primary">All Public Events</h2>
+            <hr class="border-dark" />
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    @if (item.EventType == "Public")
+                    {
+                        <partial name="_EventFirst" model="@item" />
+                    }
+                }
+            </div>
+        }
+
+        @if (_signInManager.IsSignedIn(User))
+        {
+            @if (email != "myadmin@bookevents.com")
+            {
+                <div class="container">
+                    <div class="container">
+                        <h4> You are Invited in the Events Below :</h4>
+                        <hr />
+                        <h3 class="text-success"> Upcoming Events</h3>
+                        <hr class="border-dark" />
+
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                //if (item.Invitees == null)
+                                //{
+
+                                //}
+                                if (!string.IsNullOrEmpty(item.Invitees) && item.Invitees.Split(',').Contains(email) && item.EventType == "Private" && item.Date > DateTime.Now)
+                                {
+                                    <partial name="_EventFirst" model="@item" />
+                                }
+                            }
+
+                        </div>
+                    </div>
+                    <div class="container">
+                        <h3 class="text-success"> Past Events </h3>
+                        <hr class="border-dark" />
+
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                if (!string.IsNullOrEmpty(item.Invitees) && item.Invitees.Split(',').Contains(email) && item.EventType == "Private" && item.Date < DateTime.Now)
+                                {
+                                    <partial name="_EventFirst" model="@item" />
+                                }
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+        }
+    }
+
+</div>

@@ -1,0 +1,27 @@
+﻿@model BookReadingApp.Core.Modals.Comment
+
+<h4>Comment</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Comment" asp-action="PostComment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EventId" class="custom-control-label"></label>
+                <input asp-for="EventId" class="form-control" />
+                <span asp-validation-for="EventId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="comment" class="custom-control-label"></label>
+                <input asp-for="comment" class="form-control" />
+                <span asp-validation-for="comment" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Post" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>

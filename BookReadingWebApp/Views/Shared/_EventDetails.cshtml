@@ -1,0 +1,52 @@
+﻿@model BookReadingApp.Core.Modals.Event
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> _signInManager
+@inject UserManager<IdentityUser> _userManager
+
+@{
+    var user = await _userManager.GetUserAsync(User);
+    var email = "";
+    if (user != null)
+    {
+        email = user.Email;
+    }
+}
+
+<div class="col-md-4">
+    <div class="card mb-4" style="width:20rem;">
+        <div class="card-body">
+            <div class="card-title">
+                <h4>@Model.Title</h4>
+            </div>
+
+            <div>
+                <p class="text-dark d-inline">Location :</p>@Model.Location
+            </div>
+            <div>
+                <p class="text-dark d-inline">Date :</p>@Model.Date.ToShortDateString()
+            </div>
+            <div>
+                <p class="text-dark d-inline">Start Time :</p>@Model.StartTime.ToShortTimeString();
+            </div>
+
+            <div class="btn-group">
+                <a asp-controller="Event" asp-action="ViewDetails" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-primary"> View Details</a>
+            </div>
+
+            @if (_signInManager.IsSignedIn(User) && (User.Identity.Name == Model.Organiser || email == "myadmin@bookevents.com") && Model.Date >= DateTime.Now)
+            {
+                <div class="btn-group">
+                    <a asp-controller="Event" asp-action="UpdateEvent" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-primary">Update Details</a>
+                </div>
+            }
+
+            <div class="row">
+                <div class="co-md-6">
+                    <p class="text-danger"> @Model.EventType Event</p>
+                </div>
+                <div class="col-md-6 text-danger"> Organised By <b>@Model.Organiser</b></div>
+            </div>
+
+        </div>
+    </div>
+</div>

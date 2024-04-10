@@ -1,0 +1,49 @@
+﻿@model BookReadingApp.Core.Modals.Signup
+
+@{
+    ViewData["Title"] = "SignUp Page";
+}
+
+<h1>Register Here</h1>
+
+<hr />
+<div class="row">
+    <div class="md-col-4">
+        <form asp-action="SignUp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="userName" class="custom-control-label font-weight-bold"></label>
+                <input asp-for="userName" class="form-control input-group-sm" />
+                <span asp-validation-for="userName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="email" class="custom-control-label font-weight-bold"></label>
+                <input asp-for="email" class="form-control input-group-sm" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="password" class="custom-control-label font-weight-bold"></label>
+                <input asp-for="password" class="form-control input-group-sm" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="confirmPassword" class="custom-control-label font-weight-bold"></label>
+                <input asp-for="confirmPassword" class="form-control input-group-sm" />
+                <span asp-validation-for="confirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Sign Up" class="btn btn-success btn-block" />
+            </div>
+        </form>
+
+        <div>
+            <div class="font-weight-bold">Click <a asp-controller="Account" asp-action="Login">here</a>To Login</div>
+        </div>
+
+    </div>
+</div>
