@@ -17,16 +17,25 @@ pipeline{
                 sh 'dotnet test BookReadingApp.Tests/BookReadingApp.Tests.csproj'
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                script {
-                def imageName = 'bookreadingimage'
-                    def imageTag = 'latest'
-                    def dockerfilePath = "${WORKSPACE}/BookReadingWebApp/Dockerfile" 
-                    sh "docker build -t ${imageName}:${imageTag} -f ${dockerfilePath} ${WORKSPACE}"
+            stage('Build Docker Image') {
+                steps {
+                    script {
+                        def imageName = 'bookreadingimage'
+                        def imageTag = 'latest'
+                        def container_name = 'BookReadingApp'
+                        def dockerfilePath = "${WORKSPACE}/BookReadingWebApp/Dockerfile"
+                        def existingImageId = sh(script: "docker images -q ${imageName}:${imageTag}", returnStdout: true).trim()
+                        if (existingImageId) {
+                            echo "Existing Docker container name: ${container_name}"
+                            sh 'docker rm -f BookReadingApp'
+                            echo "Existing Docker image ID: ${existingImageId}"
+                            sh "docker rmi -f ${existingImageId}"
+                            echo "Deleted existing Docker image: ${imageName}:${imageTag}"
+                        }
+                        sh "docker build -t ${imageName}:${imageTag} -f ${dockerfilePath} ${WORKSPACE}"
+                    }
                 }
             }
-        }
         stage('Run SQL Server Container') {
             steps {
                 script {
@@ -46,7 +55,7 @@ pipeline{
             steps {
                 script {
                    
-                    sh 'docker rm -f book-reading-app || true'
+                    sh 'docker rm -f BookReadingApp || true'
                      def imageId = sh(script: "docker images -q bookreadingimage:latest", returnStdout: true).trim()
                      echo "Docker image ID: ${imageId}"
                     sh "docker run -d --rm --name BookReadingApp -p 5001:80 --network testing -e 'ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=BookReadingAppDB;User Id=SA;Password=Naman@123;Encrypt=False' -e ASPNETCORE_ENVIRONMENT=Development ${imageId}"
