@@ -23,7 +23,7 @@ pipeline{
                 def imageName = 'book-reading-app'
                 def imageTag = 'latest'
                 def dockerfilePath = "${WORKSPACE}/BookReadingWebApp"
-                docker.build("${imageName}:${imageTag}", dockerfilePath)
+                docker.build("-t ${imageName}:${imageTag} -f ${dockerfilePath} ..")
                 }
             }
         }
