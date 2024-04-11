@@ -49,7 +49,7 @@ pipeline{
                     sh 'docker rm -f book-reading-app || true'
                      def imageId = sh(script: "docker images -q book-reading-app:latest", returnStdout: true).trim()
                      echo "Docker image ID: ${imageId}"
-                    sh "docker run --rm --name BookReadingApp -p 5001:80 --network testing -e 'ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=BookReadingAppDB;User Id=SA;Password=Naman@123;Encrypt=False' -e ASPNETCORE_ENVIRONMENT=Development ${imageId}"
+                    sh "docker run -d --rm --name BookReadingApp -p 5001:80 --network testing -e 'ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=BookReadingAppDB;User Id=SA;Password=Naman@123;Encrypt=False' -e ASPNETCORE_ENVIRONMENT=Development ${imageId}"
                 }
             }
         }
