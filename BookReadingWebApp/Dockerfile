@@ -24,5 +24,4 @@ RUN dotnet test "BookReadingApp.Tests/BookReadingApp.Tests.csproj" --logger "trx
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "BookReadingApp.Web.dll"]
