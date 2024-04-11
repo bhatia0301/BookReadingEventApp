@@ -21,5 +21,4 @@ RUN dotnet publish "BookReadingApp.Web.csproj" -c Release -o /app/publish /p:Use
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "BookReadingApp.Web.dll"]
