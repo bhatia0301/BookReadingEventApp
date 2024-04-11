@@ -3,6 +3,7 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
+EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
@@ -12,15 +13,11 @@ COPY ["BookReadingApp.Core/BookReadingApp.Core.csproj", "BookReadingApp.Core/"]
 COPY ["BookReadingApp.Infrastructure/BookReadingApp.Infrastructure.csproj", "BookReadingApp.Infrastructure/"]
 RUN dotnet restore "BookReadingWebApp/BookReadingApp.Web.csproj"
 COPY . .
+WORKDIR "/src/BookReadingWebApp"
+RUN dotnet build "BookReadingApp.Web.csproj" -c Release -o /app/build
 
-
-# WORKDIR "/src/BookReadingWebApp"
-# RUN dotnet build "BookReadingApp.Web.csproj" -c Release -o /app/build
-
-# FROM build AS publish
+FROM build AS publish
 RUN dotnet publish "BookReadingApp.Web.csproj" -c Release -o /app/publish /p:UseAppHost=false
-WORKDIR "/src"
-RUN dotnet test "BookReadingApp.Tests/BookReadingApp.Tests.csproj" --logger "trx;LogFileName=./aspnetapp.trx"
 
 FROM base AS final
 WORKDIR /app

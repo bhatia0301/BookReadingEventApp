@@ -1,11 +1,6 @@
 pipeline{
     agent any
 
-    environment{
-        IMAGE_NAME = 'bhatia0301/jenkins-pipeline'
-        IMAGE_TAG = 'latest'
-    }
-
     stages{
         stage('Checkout'){
             steps{
@@ -14,21 +9,21 @@ pipeline{
         }
          stage('Build') {
             steps {
-                sh 'dotnet build BookReadingWebApp/BookReadingApp.Web.csproj --configuration Release'
+                sh 'dotnet build BookReadingWebApp.sln --configuration Release'
             }
         }
          stage('Test') {
             steps {
-                sh 'dotnet test BookReadingWebApp.sln --logger "trx;LogFileName=./aspnetapp.trx"'
+                sh 'dotnet test BookReadingApp.Tests/BookReadingApp.Tests.csproj'
             }
         }
         stage('Build Docker Image') {
             steps {
+              script {
                 def imageName = 'book-reading-app'
                 def imageTag = 'latest'
                 def dockerfilePath = "${WORKSPACE}/BookReadingWebApp"
-                script {
-                   docker.build("${imageName}:${imageTag}", dockerfilePath)
+                docker.build("${imageName}:${imageTag}", dockerfilePath)
                 }
             }
         }
