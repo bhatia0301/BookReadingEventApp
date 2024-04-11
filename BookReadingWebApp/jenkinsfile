@@ -20,7 +20,7 @@ pipeline{
         stage('Build Docker Image') {
             steps {
                 script {
-                def imageName = 'book-reading-app'
+                def imageName = 'bookreadingimage'
                     def imageTag = 'latest'
                     def dockerfilePath = "${WORKSPACE}/BookReadingWebApp/Dockerfile" 
                     sh "docker build -t ${imageName}:${imageTag} -f ${dockerfilePath} ${WORKSPACE}"
