@@ -42,22 +42,32 @@ pipeline{
                 }
             }
 
-            stage('Run SQL Server Container') {
+             stage('Run SQL Server Container') {
             steps {
                 script {
-                    sh '''
-                        container_name="sqlserver"
-                        container_state=$(docker inspect -f '{{.State.Status}}' ${container_name} 2>/dev/null)
-                        if [ "$container_state" == "exited" ]; then
+                    def container_name = "sqlserver"
+                    
+                    // Check if the container exists
+                    def container_exists = sh(script: "docker ps -a -q -f name=${container_name}", returnStatus: true)
+                    
+                    if (container_exists == 0) {
+                        // Container exists, check its state
+                        def container_state = sh(script: "docker inspect -f '{{.State.Status}}' ${container_name}", returnStdout: true).trim()
+                        
+                        if (container_state == "exited") {
                             echo "Container '${container_name}' is in 'exited' state. Starting the container..."
-                            docker start ${container_name}
-                        elif [ "$container_state" == "running" ]; then
+                            sh "docker start ${container_name}"
+                        } else if (container_state == "running") {
                             echo "Container '${container_name}' is already running."
-                        else
-                            echo "Container '${container_name}' does not exist. Creating the container..."
-                            docker run -d --name ${container_name} -p 1433:1433 --network testing -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Naman@123' -e 'MSSQL_PID=Express' mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
-                        fi
-                    '''
+                        } else {
+                            echo "Error: Unable to determine the state of container '${container_name}'."
+                            // Handle error appropriately
+                        }
+                    } else {
+                        // Container does not exist, create it
+                        echo "Container '${container_name}' does not exist. Creating the container..."
+                        sh "docker run -d --name ${container_name} -p 1433:1433 --network testing -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Naman@123' -e 'MSSQL_PID=Express' mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04"
+                    }
                 }
             }
         }
