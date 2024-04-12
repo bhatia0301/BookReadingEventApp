@@ -47,8 +47,12 @@ pipeline{
                 script {
                     sh '''
                         container_name="sqlserver"
-                        if [ "$(docker ps -aq -f name=${container_name})" ]; then
-                            echo "Container '${container_name}' already exists. Skipping container creation."
+                        container_state=$(docker inspect -f '{{.State.Status}}' ${container_name} 2>/dev/null)
+                        if [ "$container_state" == "exited" ]; then
+                            echo "Container '${container_name}' is in 'exited' state. Starting the container..."
+                            docker start ${container_name}
+                        elif [ "$container_state" == "running" ]; then
+                            echo "Container '${container_name}' is already running."
                         else
                             echo "Container '${container_name}' does not exist. Creating the container..."
                             docker run -d --name ${container_name} -p 1433:1433 --network testing -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Naman@123' -e 'MSSQL_PID=Express' mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
@@ -57,7 +61,6 @@ pipeline{
                 }
             }
         }
-
          stage('Run Container') {
             steps {
                 script {
