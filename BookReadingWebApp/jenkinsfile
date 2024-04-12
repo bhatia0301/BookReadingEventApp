@@ -1,23 +1,28 @@
 pipeline{
+    
     agent any
 
     stages{
+        
         stage('Checkout'){
             steps{
                 checkout scm
             }
         }
+
          stage('Build') {
             steps {
                 sh 'dotnet build BookReadingWebApp.sln --configuration Release'
             }
         }
+
          stage('Test') {
             steps {
                 sh 'dotnet test BookReadingApp.Tests/BookReadingApp.Tests.csproj'
             }
         }
-            stage('Build Docker Image') {
+
+        stage('Build Docker Image') {
                 steps {
                     script {
                         def imageName = 'bookreadingimage'
@@ -36,31 +41,33 @@ pipeline{
                     }
                 }
             }
-        stage('Run SQL Server Container') {
-            steps {
-                script {
-                    sh '''
-                        container_name="sqlserver"
-                        if [ "$(docker ps -aq -f name=${container_name})" ]; then
-                            echo "Container '${container_name}' already exists. Skipping container creation."
-                        else
+
+            stage('Run SQL Server Container') {
+                steps {
+                    script {
+                        def container_name = "sqlserver"
+                        def container_status = sh(script: "docker inspect -f '{{.State.Status}}' ${container_name} || true", returnStatus: true).trim()
+                        if (container_status == "running") {
+                            echo "Container '${container_name}' is already running."
+                        } else if (container_status == "exited") {
+                            echo "Container '${container_name}' is in an exited state. Starting the container..."
+                            sh "docker start ${container_name}"
+                        } else if (container_status == "") {
                             echo "Container '${container_name}' does not exist. Creating the container..."
-                            docker run -d --name ${container_name} -p 1433:1433 --network testing -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Naman@123' -e 'MSSQL_PID=Express' mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
-                        fi
-                    '''
+                            sh "docker run -d --name ${container_name} -p 1433:1433 --network testing -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Naman@123' -e 'MSSQL_PID=Express' mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04"
+                        }
+                    }
                 }
             }
-        }
+
          stage('Run Container') {
             steps {
                 script {
-                    // sh 'docker rm -f BookReadingApp || true'
                      def imageId = sh(script: "docker images -q bookreadingimage:latest", returnStdout: true).trim()
                      echo "Docker image ID: ${imageId}"
                     sh "docker run -d --rm --name BookReadingApp -p 5001:80 --network testing -e 'ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=BookReadingAppDB;User Id=SA;Password=Naman@123;Encrypt=False' -e ASPNETCORE_ENVIRONMENT=Development ${imageId}"
                 }
             }
         }
-
     }  
-}
+ }
