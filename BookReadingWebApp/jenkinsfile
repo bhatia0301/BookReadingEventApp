@@ -46,14 +46,9 @@ pipeline{
             steps {
                 script {
                     def container_name = "sqlserver"
-                    
-                    // Check if the container exists
                     def container_exists = sh(script: "docker ps -a -q -f name=${container_name}", returnStatus: true)
-                    
                     if (container_exists == 0) {
-                        // Container exists, check its state
                         def container_state = sh(script: "docker inspect -f '{{.State.Status}}' ${container_name}", returnStdout: true).trim()
-                        
                         if (container_state == "exited") {
                             echo "Container '${container_name}' is in 'exited' state. Starting the container..."
                             sh "docker start ${container_name}"
@@ -61,7 +56,6 @@ pipeline{
                             echo "Container '${container_name}' is already running."
                         } else {
                             echo "Error: Unable to determine the state of container '${container_name}'."
-                            // Handle error appropriately
                         }
                     } else {
                         // Container does not exist, create it
