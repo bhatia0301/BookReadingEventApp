@@ -32,7 +32,7 @@ pipeline{
                         def existingImageId = sh(script: "docker images -q ${imageName}:${imageTag}", returnStdout: true).trim()
                         if (existingImageId) {
                             echo "Existing Docker container name: ${container_name}"
-                            sh 'docker rm -f BookReadingApp'
+                            sh "docker rm -f ${container_name}"
                             echo "Existing Docker image ID: ${existingImageId}"
                             sh "docker rmi -f ${existingImageId}"
                             echo "Deleted existing Docker image: ${imageName}:${imageTag}"
