@@ -46,7 +46,7 @@ pipeline{
                 steps {
                     script {
                         def container_name = "sqlserver"
-                        def container_status = sh(script: "docker inspect -f '{{.State.Status}}' ${container_name} || true", returnStatus: true).trim()
+                        def container_status = sh(script: "docker inspect -f '{{.State.Status}}' ${container_name} || true", returnStatus: true)
                         if (container_status == "running") {
                             echo "Container '${container_name}' is already running."
                         } else if (container_status == "exited") {
