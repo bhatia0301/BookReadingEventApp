@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aYtPqYufTSI8GYKc75W0GQ3UU8Mqm+1yBgHilCW4LldXkMAbi2c8KroOOR4UbFPqf7l1+3pW1bHL4BsemFqfPQ==",
+  "dgSpecHash": "GYOSZtp+pLw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingApp.Infrastructure\\BookReadingApp.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingApp.Infrastructure\\BookReadingApp.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\namanbhatia01\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.1.1\\microsoft.aspnetcore.authentication.2.1.1.nupkg.sha512",
     "C:\\Users\\namanbhatia01\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.1.1\\microsoft.aspnetcore.authentication.abstractions.2.1.1.nupkg.sha512",

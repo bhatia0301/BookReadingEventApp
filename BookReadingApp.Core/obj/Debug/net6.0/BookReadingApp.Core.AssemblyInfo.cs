@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookReadingApp.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e525232829317e0bae121ea9a5acfb033a66e2d9")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookReadingApp.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BookReadingApp.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

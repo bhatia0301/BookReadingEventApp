@@ -1,10 +1,5 @@
 ﻿using BookReadingApp.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BookReadingApp.Web.Controllers
@@ -28,13 +23,6 @@ namespace BookReadingApp.Web.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [Route("customer-support")]
-
-        public IActionResult CustomerSupport()
-        {
-            return Redirect("https://www.nagarro.com/en/contact-us");
         }
     }
 }

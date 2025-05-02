@@ -804,12 +804,18 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.25"
         },
         "runtime": {
-          "BookReadingApp.Application.dll": {}
+          "BookReadingApp.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "BookReadingApp.Core/1.0.0": {
         "runtime": {
-          "BookReadingApp.Core.dll": {}
+          "BookReadingApp.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

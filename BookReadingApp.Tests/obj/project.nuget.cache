@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ows38CvKpWeR1ov2UQ+8ZwYO0SZCB3o6o8nU/Kl+O1QsZLo3zpJbQZI2Iflu9fne8HhDPY8GfV2+N81rJBET7A==",
+  "dgSpecHash": "nXxB/YFVyVg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingApp.Tests\\BookReadingApp.Tests.csproj",
+  "projectFilePath": "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingApp.Tests\\BookReadingApp.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\namanbhatia01\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\namanbhatia01\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",

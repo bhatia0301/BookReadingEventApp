@@ -14,7 +14,8 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.25",
           "Microsoft.EntityFrameworkCore": "6.0.25",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.25",
-          "Microsoft.EntityFrameworkCore.Tools": "6.0.25"
+          "Microsoft.EntityFrameworkCore.Tools": "6.0.25",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.4"
         },
         "runtime": {
           "BookReadingApp.Web.dll": {}
@@ -461,6 +462,7 @@
         }
       },
       "Microsoft.NETCore.Platforms/3.1.0": {},
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.19.4": {},
       "Microsoft.Win32.Registry/4.7.0": {
         "dependencies": {
           "System.Security.AccessControl": "4.7.0",
@@ -651,12 +653,18 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.25"
         },
         "runtime": {
-          "BookReadingApp.Application.dll": {}
+          "BookReadingApp.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "BookReadingApp.Core/1.0.0": {
         "runtime": {
-          "BookReadingApp.Core.dll": {}
+          "BookReadingApp.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "BookReadingApp.Infrastructure/1.0.0": {
@@ -668,7 +676,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.25"
         },
         "runtime": {
-          "BookReadingApp.Infrastructure.dll": {}
+          "BookReadingApp.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -1035,6 +1046,13 @@
       "sha512": "sha512-z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
       "path": "microsoft.netcore.platforms/3.1.0",
       "hashPath": "microsoft.netcore.platforms.3.1.0.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.19.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aKxpRAUIxDrnSnyr7xJWGixOBgsB7Z4oHpWRkpRzzq04kfze4mN7944gRc4X9H2U5KG3A/btF74kavkO8KXqCg==",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.19.4",
+      "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512"
     },
     "Microsoft.Win32.Registry/4.7.0": {
       "type": "package",

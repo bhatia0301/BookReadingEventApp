@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9J9AOf5q0lMj9Hfg/o3W7WJgq9GojMOZ2JYkt12oVTLlHQaEqO3xZ0IcdkuFT4rQ2pembKuMp4iaXnQi9VPWhQ==",
+  "dgSpecHash": "MZQKcXRVxCQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingWebApp\\BookReadingApp.Web.csproj",
+  "projectFilePath": "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingWebApp\\BookReadingApp.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\namanbhatia01\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\namanbhatia01\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.1.1\\microsoft.aspnetcore.authentication.2.1.1.nupkg.sha512",

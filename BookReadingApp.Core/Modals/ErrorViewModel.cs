@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BookReadingApp.Core.Modals
+﻿namespace BookReadingApp.Core.Modals
 {
     public class ErrorViewModel
     {

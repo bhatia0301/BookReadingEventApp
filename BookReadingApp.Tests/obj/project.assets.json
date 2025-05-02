@@ -9331,11 +9331,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingApp.Tests\\BookReadingApp.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingApp.Tests\\BookReadingApp.Tests.csproj",
       "projectName": "BookReadingApp.Tests",
-      "projectPath": "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingApp.Tests\\BookReadingApp.Tests.csproj",
+      "projectPath": "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingApp.Tests\\BookReadingApp.Tests.csproj",
       "packagesPath": "C:\\Users\\namanbhatia01\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingApp.Tests\\obj\\",
+      "outputPath": "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingApp.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -9356,17 +9356,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingApp.Application\\BookReadingApp.Application.csproj": {
-              "projectPath": "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingApp.Application\\BookReadingApp.Application.csproj"
+            "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingApp.Application\\BookReadingApp.Application.csproj": {
+              "projectPath": "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingApp.Application\\BookReadingApp.Application.csproj"
             },
-            "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingApp.Core\\BookReadingApp.Core.csproj": {
-              "projectPath": "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingApp.Core\\BookReadingApp.Core.csproj"
+            "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingApp.Core\\BookReadingApp.Core.csproj": {
+              "projectPath": "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingApp.Core\\BookReadingApp.Core.csproj"
             },
-            "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingApp.Infrastructure\\BookReadingApp.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingApp.Infrastructure\\BookReadingApp.Infrastructure.csproj"
+            "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingApp.Infrastructure\\BookReadingApp.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingApp.Infrastructure\\BookReadingApp.Infrastructure.csproj"
             },
-            "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingWebApp\\BookReadingApp.Web.csproj": {
-              "projectPath": "C:\\Users\\namanbhatia01\\source\\repos\\BookReadingWebApp\\BookReadingWebApp\\BookReadingApp.Web.csproj"
+            "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingWebApp\\BookReadingApp.Web.csproj": {
+              "projectPath": "C:\\Users\\namanbhatia01\\naman-bhatia\\BookReadingEventApp\\BookReadingWebApp\\BookReadingApp.Web.csproj"
             }
           }
         }
@@ -9375,7 +9375,13 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net6.0": {
@@ -9430,7 +9436,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
